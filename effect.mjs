@@ -1,6 +1,9 @@
-class Effect {
+const positive_effect_tokens = [
+    "Fortify", "Resist", "Cure", "Restore", "Regenerate", 
+    "Invisibility", "Waterbreathing"
+];
 
-    static positive_effect_tokens =  ["Fortify", "Resist", "Cure", "Restore", "Regenerate", "Invisibility", "Waterbreathing"];
+class Effect {
 
     constructor(name,type) {
         this.name = name;
@@ -10,7 +13,7 @@ class Effect {
     static from(name){
         return new Effect(
             name,
-            Effect.some(token => name.includes(token)) ? 'beneficial' : 'harmful'
+            positive_effect_tokens.some(token => name.includes(token)) ? 'beneficial' : 'harmful'
         );
     }
 }
